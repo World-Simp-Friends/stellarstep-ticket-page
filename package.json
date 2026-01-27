@@ -6,7 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build:css": "tailwindcss -i ./src/input.css -o ./asset/css/styles.css --minify",
-    "watch:css": "tailwindcss -i ./src/input.css -o ./asset/css/styles.css --watch"
+    "watch:css": "tailwindcss -i ./src/input.css -o ./asset/css/styles.css --watch",
+    "serve": "serve .",
+    "dev": "concurrently \"npm run watch:css\" \"npm run serve\""
   },
   "repository": {
     "type": "git",
@@ -26,7 +28,9 @@
     "@tailwindcss/forms": "^0.5.11",
     "@tailwindcss/typography": "^0.5.19",
     "autoprefixer": "^10.4.23",
+    "concurrently": "^9.2.1",
     "postcss": "^8.5.6",
+    "serve": "^14.2.5",
     "tailwindcss": "^4.1.18"
   }
 }

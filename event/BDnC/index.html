@@ -5,6 +5,13 @@
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>Stellar Steps: BanG Dream! &amp; Chill</title>
+    <meta name="description"
+        content="Sự kiện offline BanG Dream! & Chill tại Hà Nội. Giao lưu, âm nhạc, và những trải nghiệm tuyệt vời cùng cộng đồng Bandori Việt Nam. Đặt vé ngay hôm nay!">
+    <meta property="og:title" content="Stellar Steps: BanG Dream! & Chill">
+    <meta property="og:description"
+        content="Sự kiện offline 10th Anniversary BanG Dream! tại Việt Nam. Tham gia cùng chúng mình vào ngày 28/02/2026!">
+    <meta property="og:image" content="asset/images/visual-art.webp">
+    <meta property="og:type" content="website">
     <link rel="apple-touch-icon" sizes="180x180" href="asset/favicon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="asset/favicon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="asset/favicon/favicon-16x16.png">
@@ -12,6 +19,7 @@
     <link rel="shortcut icon" href="asset/favicon/favicon.ico">
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preload" as="image" href="asset/images/visual-art.webp">
     <link
         href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&family=Nunito:wght@300;400;500;600;700&display=swap"
         rel="stylesheet" />
@@ -54,6 +62,10 @@
     <style>
         .clip-diagonal {
             clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         .clip-tech {
@@ -136,7 +148,8 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
                 <div class="flex items-center gap-3">
-                    <img src="asset/images/logo.png" alt="Stellar Steps Logo" class="h-12 w-auto object-contain" />
+                    <img src="asset/images/logo.webp" alt="Stellar Steps Logo" class="h-12 w-auto object-contain"
+                        width="150" height="75" />
                 </div>
                 <div class="hidden md:flex space-x-8 items-center">
                     <a class="text-sm font-bold text-gray-600 hover:text-primary transition-colors relative group"
@@ -306,8 +319,9 @@
                     <div
                         class="relative z-10 w-full max-w-[300px] md:max-w-none md:w-[140%] lg:w-[120%] xl:w-[110%] mx-auto md:mx-0 md:-mr-20 lg:-mr-32 xl:-mr-40 flex justify-center">
                         <img alt="BanG Dream! Visual" fetchpriority="high" loading="eager"
-                            class="w-full h-auto max-h-[50vh] md:max-h-[70vh] object-contain drop-shadow-2xl transition-transform duration-700 hover:scale-105"
-                            src="asset/images/visual-art.png" />
+                            class="w-full h-auto max-h-[50vh] md:max-h-[70vh] object-contain drop-shadow-2xl transition-all duration-700 hover:scale-105 opacity-0"
+                            src="asset/images/visual-art.webp" onload="this.classList.remove('opacity-0')" width="2332"
+                            height="2944" />
                     </div>
 
                     <!-- Decorative elements behind the character -->
@@ -335,7 +349,7 @@
                     <div class="absolute inset-0 bg-gray-200">
                         <img alt="Học Viện Tư Pháp" loading="lazy"
                             class="w-full h-full object-cover opacity-90 mix-blend-overlay grayscale group-hover:grayscale-0 transition-all duration-500"
-                            src="asset/images/hv_tu_phap.jpeg" />
+                            src="asset/images/hv_tu_phap.webp" width="2048" height="1536" />
                         <div
                             class="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/20 to-transparent opacity-80">
                         </div>
@@ -549,8 +563,8 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
                 <div>
                     <div class="flex items-center gap-2 mb-4">
-                        <img src="asset/images/logo-footer.png" alt="Stellar Steps Logo"
-                            class="h-16 w-auto object-contain" />
+                        <img src="asset/images/logo-footer.webp" alt="Stellar Steps Logo"
+                            class="h-16 w-auto object-contain" width="200" height="90" />
                     </div>
                     <p class="text-sm text-gray-500 max-w-sm">
                         Chúng mình là team Stellar Steps, một team tập trung vào việc tổ chức các event offline/online

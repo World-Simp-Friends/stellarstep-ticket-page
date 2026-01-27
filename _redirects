@@ -1,0 +1,14 @@
+# Cloudflare Pages Redirect Rules
+
+# Main Event Redirects
+/event             /event/BDnC/          301
+/event/            /event/BDnC/          301
+
+# Short Links
+/bg                /event/BDnC/          302
+/ticket            /event/BDnC/#tickets  302
+/ve                /event/BDnC/#tickets  302
+/map               /event/BDnC/#map      302
+
+# Fallback (SPA-like behavior if needed, generally handled by 404.html automatically but explicit rule helps)
+# /event/BDnC/*      /event/BDnC/index.html 200

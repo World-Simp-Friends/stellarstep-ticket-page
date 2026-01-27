@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Stellar Steps: BanG Dream! &amp; Chill</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="asset/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="asset/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="asset/favicon/favicon-16x16.png">
+    <link rel="manifest" href="asset/favicon/site.webmanifest">
+    <link rel="shortcut icon" href="asset/favicon/favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&family=Nunito:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,container-queries"></script>
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#EA0050", // Brand Red/Pink
+                        secondary: "#EE4C85", // Softer Pink
+                        accent: "#FFD5E4", // Pale Pink
+                        "background-light": "#F6F6F6", // Light Gray Background
+                        "surface-light": "#FFFFFF",
+                        "surface-dark": "#1A1D2D",
+                        "text-light": "#2D334A",
+                        "text-dark": "#E6E8F0",
+                    },
+                    fontFamily: {
+                        display: ["Montserrat", "sans-serif"],
+                        body: ["Nunito", "sans-serif"],
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.5rem",
+                        'xl': '1rem',
+                        '2xl': '1.5rem',
+                        '3xl': '2rem',
+                    },
+                    backgroundImage: {
+                        'glass-gradient': 'linear-gradient(135deg, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0.1) 100%)',
+                    }
+                },
+            },
+        };
+    </script>
+    <style>
+        .clip-diagonal {
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+        }
+
+        .clip-tech {
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 95% 100%, 0 100%);
+        }
+
+        .glow-text {
+            text-shadow: 0 0 15px rgba(234, 0, 80, 0.3);
+        }
+
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.65);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            box-shadow: 0 8px 32px 0 rgba(234, 0, 80, 0.05);
+        }
+
+        .glass-panel-highlight {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(234, 0, 80, 0.2);
+            box-shadow: 0 12px 40px 0 rgba(234, 0, 80, 0.15);
+        }
+
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-15px);
+            }
+
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #F6F6F6;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #EA0050;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #EE4C85;
+        }
+    </style>
+</head>
+
+<body
+    class="bg-background-light text-text-light font-body antialiased transition-colors duration-300 overflow-x-hidden selection:bg-primary selection:text-white">
+    <div class="fixed inset-0 overflow-hidden pointer-events-none -z-10">
+        <div class="absolute -top-[20%] -right-[10%] w-[60%] h-[60%] bg-primary/10 rounded-full blur-3xl"></div>
+        <div class="absolute top-[40%] -left-[10%] w-[50%] h-[50%] bg-secondary/10 rounded-full blur-3xl"></div>
+        <div class="absolute -bottom-[10%] right-[10%] w-[40%] h-[40%] bg-accent/40 rounded-full blur-3xl"></div>
+        <svg class="absolute inset-0 w-full h-full opacity-[0.05]" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <pattern height="40" id="grid-pattern" patternUnits="userSpaceOnUse" width="40">
+                    <path d="M 40 0 L 0 0 0 40" fill="none" stroke="currentColor" stroke-width="1"></path>
+                </pattern>
+            </defs>
+            <rect fill="url(#grid-pattern)" height="100%" width="100%"></rect>
+        </svg>
+    </div>
+    <nav class="fixed w-full z-50 bg-white/70 backdrop-blur-lg border-b border-white/50 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex items-center gap-3">
+                    <img src="asset/images/logo.png" alt="Stellar Steps Logo" class="h-12 w-auto object-contain" />
+                </div>
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a class="text-sm font-bold text-gray-600 hover:text-primary transition-colors relative group"
+                        href="#">
+                        TRANG CHỦ
+                        <span
+                            class="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all group-hover:w-full"></span>
+                    </a>
+                    <a class="text-sm font-bold text-gray-600 hover:text-primary transition-colors relative group"
+                        href="https://www.facebook.com/stellarsteps.event" target="_blank">
+                        TIN TỨC
+                        <span
+                            class="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all group-hover:w-full"></span>
+                    </a>
+                    <a class="bg-primary hover:bg-secondary text-white px-6 py-2.5 rounded-lg font-bold shadow-lg shadow-primary/30 hover:shadow-primary/50 hover:-translate-y-0.5 transition-all transform flex items-center gap-2"
+                        href="#tickets">
+                        <span class="material-symbols-outlined text-[20px]">confirmation_number</span>
+                        ĐẶT VÉ NGAY
+                    </a>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-gray-500 hover:text-primary focus:outline-none">
+                        <span class="material-symbols-outlined text-3xl">menu</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu"
+            class="hidden md:hidden bg-white/95 backdrop-blur-xl border-t border-gray-100 absolute w-full left-0 top-20 shadow-xl transition-all duration-300">
+            <div class="px-4 py-6 space-y-4">
+                <a class="block text-base font-bold text-gray-600 hover:text-primary hover:pl-2 transition-all"
+                    href="#">
+                    TRANG CHỦ
+                </a>
+                <a class="block text-base font-bold text-gray-600 hover:text-primary hover:pl-2 transition-all"
+                    href="https://www.facebook.com/stellarsteps.event" target="_blank">
+                    TIN TỨC
+                </a>
+                <a class="block w-full text-center bg-primary hover:bg-secondary text-white px-6 py-3 rounded-xl font-bold shadow-lg shadow-primary/30 transition-all"
+                    href="#tickets">
+                    ĐẶT VÉ NGAY
+                </a>
+            </div>
+        </div>
+        <script>
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+                const icon = mobileMenuBtn.querySelector('span');
+                if (mobileMenu.classList.contains('hidden')) {
+                    icon.textContent = 'menu';
+                } else {
+                    icon.textContent = 'close';
+                }
+            });
+
+            // Close menu when clicking a link
+            mobileMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                    mobileMenuBtn.querySelector('span').textContent = 'menu';
+                });
+            });
+        </script>
+    </nav>
+    <header class="relative pt-32 pb-20 md:pt-40 md:pb-24 overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-white/0 via-accent/20 to-white/0 pointer-events-none"></div>
+        <div
+            class="absolute top-0 right-0 w-1/3 h-full border-l border-primary/5 bg-white/30 transform skew-x-12 translate-x-1/4 pointer-events-none">
+        </div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="flex flex-col md:flex-row items-center gap-12 lg:gap-20">
+                <div class="md:w-1/2 text-center md:text-left space-y-6">
+                    <div
+                        class="inline-flex items-center gap-2 glass-panel px-4 py-1.5 rounded-full mb-2 border-l-4 border-l-primary">
+                        <span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+                        <span class="text-primary font-bold text-xs tracking-widest uppercase">Sự kiện Offline
+                            2026</span>
+                    </div>
+                    <h1 class="font-display font-black text-4xl sm:text-5xl lg:text-7xl leading-tight">
+                        <span
+                            class="block text-2xl sm:text-3xl lg:text-4xl text-primary font-extrabold tracking-widest mb-2 uppercase">Stellar
+                            Steps</span>
+                        <span class="block text-gray-800 drop-shadow-sm glow-text">BanG Dream!<br /><span
+                                class="text-secondary">&amp; Chill</span></span>
+                    </h1>
+                    <p class="text-lg text-gray-600 max-w-lg mx-auto md:mx-0 leading-relaxed font-medium">
+                        10 năm là một cột mốc quan trọng, càng đặc biệt hơn nữa khi cả 10 band của BanG Dream! sẽ xuất
+                        hiện trên sân khấu 10th anni live. Và tuyệt thật đấy, chúng ta lại có thể gặp nhau nhân dịp này!
+                    </p>
+                    <div class="py-4">
+                        <p class="text-sm font-bold text-gray-500 mb-3 uppercase tracking-wider">Đếm ngược đến 09:30 -
+                            28/02/2026</p>
+                        <div class="flex justify-center md:justify-start gap-2 sm:gap-4 flex-wrap sm:flex-nowrap">
+                            <div
+                                class="glass-panel p-2 sm:p-4 rounded-xl min-w-[60px] sm:min-w-[80px] text-center group hover:border-primary/50 transition-colors">
+                                <span id="days"
+                                    class="block text-2xl sm:text-3xl font-black text-primary group-hover:scale-110 transition-transform">00</span>
+                                <span
+                                    class="text-[8px] sm:text-[10px] text-gray-500 uppercase font-bold tracking-wider">Ngày</span>
+                            </div>
+                            <div
+                                class="glass-panel p-2 sm:p-4 rounded-xl min-w-[60px] sm:min-w-[80px] text-center group hover:border-primary/50 transition-colors">
+                                <span id="hours"
+                                    class="block text-2xl sm:text-3xl font-black text-primary group-hover:scale-110 transition-transform">00</span>
+                                <span
+                                    class="text-[8px] sm:text-[10px] text-gray-500 uppercase font-bold tracking-wider">Giờ</span>
+                            </div>
+                            <div
+                                class="glass-panel p-2 sm:p-4 rounded-xl min-w-[60px] sm:min-w-[80px] text-center group hover:border-primary/50 transition-colors">
+                                <span id="minutes"
+                                    class="block text-2xl sm:text-3xl font-black text-primary group-hover:scale-110 transition-transform">00</span>
+                                <span
+                                    class="text-[8px] sm:text-[10px] text-gray-500 uppercase font-bold tracking-wider">Phút</span>
+                            </div>
+                            <div
+                                class="glass-panel p-2 sm:p-4 rounded-xl min-w-[60px] sm:min-w-[80px] text-center group hover:border-primary/50 transition-colors">
+                                <span id="seconds"
+                                    class="block text-2xl sm:text-3xl font-black text-primary group-hover:scale-110 transition-transform">00</span>
+                                <span
+                                    class="text-[8px] sm:text-[10px] text-gray-500 uppercase font-bold tracking-wider">Giây</span>
+                            </div>
+                        </div>
+
+                        <script>
+                            function updateCountdown() {
+                                const targetDate = new Date("2026-02-28T09:30:00").getTime();
+                                const now = new Date().getTime();
+                                const difference = targetDate - now;
+
+                                if (difference < 0) {
+                                    // Event passed
+                                    document.getElementById("days").innerText = "00";
+                                    document.getElementById("hours").innerText = "00";
+                                    document.getElementById("minutes").innerText = "00";
+                                    document.getElementById("seconds").innerText = "00";
+                                    return;
+                                }
+
+                                const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+                                const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                                const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+                                const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+                                document.getElementById("days").innerText = String(days).padStart(2, '0');
+                                document.getElementById("hours").innerText = String(hours).padStart(2, '0');
+                                document.getElementById("minutes").innerText = String(minutes).padStart(2, '0');
+                                document.getElementById("seconds").innerText = String(seconds).padStart(2, '0');
+                            }
+
+                            setInterval(updateCountdown, 1000);
+                            updateCountdown(); // Initial call
+                        </script>
+                    </div>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start pt-4">
+                        <a class="bg-primary hover:bg-secondary text-white px-8 py-4 rounded-xl font-bold shadow-xl shadow-primary/30 transition-all hover:-translate-y-1 flex items-center justify-center gap-2 ring-2 ring-white/50"
+                            href="#tickets">
+                            <span class="material-symbols-outlined">local_activity</span>
+                            ĐẶT VÉ NGAY
+                        </a>
+                    </div>
+                </div>
+                <div class="md:w-1/2 relative animate-float flex justify-center md:justify-end items-center">
+                    <div
+                        class="relative z-10 w-full max-w-[300px] md:max-w-none md:w-[140%] lg:w-[120%] xl:w-[110%] mx-auto md:mx-0 md:-mr-20 lg:-mr-32 xl:-mr-40 flex justify-center">
+                        <img alt="BanG Dream! Visual" fetchpriority="high" loading="eager"
+                            class="w-full h-auto max-h-[50vh] md:max-h-[70vh] object-contain drop-shadow-2xl transition-transform duration-700 hover:scale-105"
+                            src="asset/images/visual-art.png" />
+                    </div>
+
+                    <!-- Decorative elements behind the character -->
+                    <div
+                        class="absolute top-10 right-10 w-64 h-64 bg-secondary/10 rounded-full blur-3xl -z-10 animate-pulse">
+                    </div>
+                    <div class="absolute bottom-0 left-10 w-48 h-48 bg-primary/10 rounded-full blur-3xl -z-10"></div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <section class="py-16 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-end gap-4 mb-8">
+                <h2 class="font-display font-black text-4xl text-gray-800 uppercase tracking-tight">Thông Tin <span
+                        class="text-primary">Sự Kiện</span></h2>
+                <div class="h-1 flex-grow bg-gray-200 rounded-full mb-3 max-w-[100px]">
+                    <div class="h-full bg-primary w-1/2 rounded-full"></div>
+                </div>
+            </div>
+            <div
+                class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 md:grid-rows-2 lg:grid-rows-2 gap-6 h-auto md:h-auto lg:h-[400px]">
+                <div
+                    class="md:col-span-2 lg:col-span-2 md:row-span-2 glass-panel rounded-2xl p-0 relative overflow-hidden group hover:shadow-xl transition-all duration-300 min-h-[300px]">
+                    <div class="absolute inset-0 bg-gray-200">
+                        <img alt="Học Viện Tư Pháp" loading="lazy"
+                            class="w-full h-full object-cover opacity-90 mix-blend-overlay grayscale group-hover:grayscale-0 transition-all duration-500"
+                            src="asset/images/hv_tu_phap.jpeg" />
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/20 to-transparent opacity-80">
+                        </div>
+                    </div>
+                    <div class="relative z-10 h-full flex flex-col justify-end p-8 text-white">
+                        <div
+                            class="bg-white/20 backdrop-blur-md self-start px-3 py-1 rounded-md text-xs font-bold mb-4 border border-white/30">
+                            ĐỊA ĐIỂM TỔ CHỨC
+                        </div>
+                        <h3 class="text-2xl font-bold mb-2">Học Viện Tư Pháp</h3>
+                        <div class="flex items-end justify-between gap-4">
+                            <div class="flex items-start gap-3 text-white/90">
+                                <span class="material-symbols-outlined mt-1">location_on</span>
+                                <p class="text-sm font-medium leading-relaxed">
+                                    Tầng 11, Tòa nhà B<br />
+                                    Số 9 Trần Vỹ, Mai Dịch, Cầu Giấy
+                                </p>
+                            </div>
+                            <a href="https://maps.app.goo.gl/LYKFKvHMGzZbRh8RA" target="_blank"
+                                class="flex items-center gap-2 bg-white/20 hover:bg-white/30 backdrop-blur-md px-4 py-2 rounded-lg text-white font-bold text-xs border border-white/30 transition-all hover:scale-105 shrink-0">
+                                <span class="material-symbols-outlined text-sm">map</span>
+                                Bản đồ
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div
+                    class="md:col-span-1 lg:col-span-1 md:row-span-1 lg:row-span-2 glass-panel rounded-2xl p-6 flex flex-col justify-between items-center text-center hover:border-primary transition-colors group">
+                    <div
+                        class="w-12 h-12 rounded-full bg-accent/30 flex items-center justify-center text-primary mb-4 group-hover:bg-primary group-hover:text-white transition-colors">
+                        <span class="material-symbols-outlined text-2xl">calendar_month</span>
+                    </div>
+                    <div>
+                        <span class="block text-gray-400 text-xs font-bold uppercase tracking-wider mb-1">NGÀY</span>
+                        <span class="block text-5xl font-black text-gray-800 tracking-tighter">28</span>
+                        <span class="block text-xl font-bold text-primary uppercase">Tháng 02</span>
+                        <span class="block text-lg font-bold text-gray-400">2026</span>
+                    </div>
+                    <div class="w-full h-1 bg-gray-100 rounded-full mt-4">
+                        <div class="w-2/3 h-full bg-secondary rounded-full"></div>
+                    </div>
+                </div>
+                <div
+                    class="md:col-span-1 lg:col-span-1 md:row-span-1 glass-panel rounded-2xl p-6 flex flex-col justify-center items-center hover:border-primary transition-colors">
+                    <div class="flex items-center gap-3 mb-2">
+                        <span class="material-symbols-outlined text-primary">schedule</span>
+                        <span class="text-gray-400 text-xs font-bold uppercase tracking-wider">THỜI GIAN</span>
+                    </div>
+                    <p class="text-2xl md:text-4xl font-black text-gray-800">09:30</p>
+                    <p class="text-sm md:text-lg font-bold text-gray-500">đến 19:30</p>
+                </div>
+                <div
+                    class="md:col-span-2 lg:col-span-1 md:row-span-1 glass-panel rounded-2xl p-6 flex flex-col justify-center bg-white hover:bg-accent/20 transition-colors">
+                    <div class="flex items-center gap-3 mb-2">
+                        <span class="material-symbols-outlined text-secondary">groups</span>
+                        <span class="text-gray-400 text-xs font-bold uppercase tracking-wider">THAM GIA</span>
+                    </div>
+                    <p class="text-lg md:text-2xl font-bold text-gray-800 leading-tight">Giao lưu &amp; Chill cùng cộng
+                        đồng</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="py-20 relative overflow-hidden" id="tickets">
+        <div class="absolute inset-0 bg-gradient-to-b from-white to-accent/20 -z-20"></div>
+        <div
+            class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full h-full max-w-5xl bg-grid-pattern opacity-10 pointer-events-none">
+        </div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="font-display font-black text-4xl text-gray-800 uppercase mb-4">Chọn Hạng Vé <span
+                        class="text-primary">Của Bạn</span></h2>
+                <p class="text-gray-600 max-w-xl mx-auto">Số lượng vé có hạn. Hãy nhanh tay sở hữu tấm vé phù hợp nhất
+                    để tham gia cùng chúng mình nhé!</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-end">
+                <div
+                    class="glass-panel rounded-3xl p-8 border-t-4 border-t-gray-300 hover:-translate-y-2 transition-transform duration-300">
+                    <div class="flex justify-between items-start mb-4">
+                        <h3 class="font-display font-bold text-2xl text-gray-700">VÉ DENEB</h3>
+                        <span class="px-2 py-1 bg-gray-100 text-gray-600 text-xs font-bold rounded">Standard</span>
+                    </div>
+                    <div class="mb-6">
+                        <div class="text-4xl font-black text-gray-800">120K</div>
+                        <p class="text-xs text-primary font-bold mt-1">Mở bán: 16/2 - 22/2</p>
+                    </div>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center gap-3 text-sm font-medium text-gray-600">
+                            <span class="material-symbols-outlined text-secondary text-[20px]">check_circle</span>
+                            Chọn vị trí ngồi
+                        </li>
+                        <li class="flex items-center gap-3 text-sm font-medium text-gray-600">
+                            <span class="material-symbols-outlined text-secondary text-[20px]">check_circle</span>
+                            Nước refill thả ga
+                        </li>
+                        <li class="flex items-center gap-3 text-sm font-medium text-gray-600">
+                            <span class="material-symbols-outlined text-secondary text-[20px]">check_circle</span>
+                            1 Ticket lưu niệm
+                        </li>
+                        <li class="flex items-center gap-3 text-sm font-medium text-gray-600">
+                            <span class="material-symbols-outlined text-secondary text-[20px]">check_circle</span>
+                            1 Postcard độc quyền
+                        </li>
+                    </ul>
+                    <button disabled
+                        class="w-full py-3 rounded-xl border-2 border-gray-300 text-gray-400 font-bold bg-gray-100 cursor-not-allowed">
+                        Tạm thời khóa
+                    </button>
+                </div>
+                <div
+                    class="glass-panel rounded-3xl p-8 border-t-4 border-t-secondary hover:-translate-y-2 transition-transform duration-300 relative">
+                    <div class="flex justify-between items-start mb-4">
+                        <h3 class="font-display font-bold text-2xl text-secondary">VÉ ALTAIR</h3>
+                        <span class="px-2 py-1 bg-secondary/10 text-secondary text-xs font-bold rounded">Popular</span>
+                    </div>
+                    <div class="mb-6">
+                        <div class="text-4xl font-black text-gray-800">150K</div>
+                        <p class="text-xs text-primary font-bold mt-1">Mở bán: 16/2 - 22/2</p>
+                    </div>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center gap-3 text-sm font-medium text-gray-700">
+                            <span class="material-symbols-outlined text-secondary text-[20px]">check_circle</span>
+                            Chọn vị trí ngồi
+                        </li>
+                        <li class="flex items-center gap-3 text-sm font-medium text-gray-700">
+                            <span class="material-symbols-outlined text-secondary text-[20px]">check_circle</span>
+                            Nước refill thả ga
+                        </li>
+                        <li class="flex items-center gap-3 text-sm font-medium text-gray-700">
+                            <span class="material-symbols-outlined text-secondary text-[20px]">check_circle</span>
+                            1 Ticket lưu niệm
+                        </li>
+                        <li class="flex items-center gap-3 text-sm font-bold text-gray-800 bg-secondary/5 p-1 rounded">
+                            <span class="material-symbols-outlined text-secondary text-[20px]">star</span>
+                            1 Glowstick (pick màu)
+                        </li>
+                        <li class="flex items-center gap-3 text-sm font-bold text-gray-800 bg-secondary/5 p-1 rounded">
+                            <span class="material-symbols-outlined text-secondary text-[20px]">star</span>
+                            1 Artprint (Aya/Tomori Random)
+                        </li>
+                        <li class="flex items-center gap-3 text-sm font-medium text-gray-700">
+                            <span class="material-symbols-outlined text-secondary text-[20px]">check_circle</span>
+                            1 Postcard độc quyền
+                        </li>
+                    </ul>
+                    <button disabled
+                        class="w-full py-3 rounded-xl bg-secondary/50 text-white font-bold cursor-not-allowed shadow-none">
+                        Tạm thời khóa
+                    </button>
+                </div>
+                <div
+                    class="glass-panel-highlight rounded-3xl p-8 border border-primary relative transform md:-translate-y-4 shadow-2xl z-10">
+                    <div
+                        class="absolute -top-5 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-primary to-secondary text-white px-6 py-1.5 rounded-full text-sm font-bold shadow-lg whitespace-nowrap">
+                        BEST SELLER / EARLY BIRD
+                    </div>
+                    <div class="flex justify-between items-start mb-4 mt-2">
+                        <h3 class="font-display font-black text-3xl text-primary">VÉ VEGA</h3>
+                        <span class="px-2 py-1 bg-primary/10 text-primary text-xs font-bold rounded">VIP</span>
+                    </div>
+                    <div class="mb-6">
+                        <div class="text-5xl font-black text-gray-800">250K</div>
+                        <p class="text-xs text-primary font-bold mt-1 bg-accent/30 inline-block px-2 py-0.5 rounded">Mở
+                            bán: 8/2 - 15/2</p>
+                    </div>
+                    <div class="h-px bg-gradient-to-r from-primary/50 to-transparent mb-6"></div>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center gap-3 text-sm font-bold text-gray-800">
+                            <span class="material-symbols-outlined text-primary text-[20px]">crown</span>
+                            Chọn vị trí ngồi sớm nhất
+                        </li>
+                        <li class="flex items-center gap-3 text-sm font-medium text-gray-700">
+                            <span class="material-symbols-outlined text-primary text-[20px]">check_circle</span>
+                            Nước refill thả ga
+                        </li>
+                        <li class="flex items-center gap-3 text-sm font-bold text-gray-800 bg-primary/5 p-1 rounded">
+                            <span class="material-symbols-outlined text-primary text-[20px]">confirmation_number</span>
+                            1 Ticket VIP lưu niệm (ghi tên)
+                        </li>
+                        <li class="flex items-center gap-3 text-sm font-bold text-gray-800 bg-primary/5 p-1 rounded">
+                            <span class="material-symbols-outlined text-primary text-[20px]">light_mode</span>
+                            2 Glowstick (pick)
+                        </li>
+                        <li class="flex items-center gap-3 text-sm font-bold text-gray-800 bg-primary/5 p-1 rounded">
+                            <span class="material-symbols-outlined text-primary text-[20px]">palette</span>
+                            1 Artprint (Aya/Tomori Pick)
+                        </li>
+                        <li class="flex items-center gap-3 text-sm font-bold text-gray-800 bg-primary/5 p-1 rounded">
+                            <span class="material-symbols-outlined text-primary text-[20px]">sentiment_satisfied</span>
+                            1 Shikishi (Kasumi/Tomori Pick)
+                        </li>
+                        <li class="flex items-center gap-3 text-sm font-bold text-gray-800 bg-primary/5 p-1 rounded">
+                            <span class="material-symbols-outlined text-primary text-[20px]">sentiment_satisfied</span>
+                            1 Sticker Jennifer-chan
+                        </li>
+                        <li class="flex items-center gap-3 text-sm font-medium text-gray-700">
+                            <span class="material-symbols-outlined text-primary text-[20px]">check_circle</span>
+                            1 Postcard độc quyền
+                        </li>
+                    </ul>
+                    <button disabled
+                        class="w-full py-4 rounded-xl bg-gray-300 text-gray-500 font-bold cursor-not-allowed shadow-none">
+                        Tạm thời khóa
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer class="bg-white border-t border-gray-200 pt-12 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                <div>
+                    <div class="flex items-center gap-2 mb-4">
+                        <img src="asset/images/logo-footer.png" alt="Stellar Steps Logo"
+                            class="h-16 w-auto object-contain" />
+                    </div>
+                    <p class="text-sm text-gray-500 max-w-sm">
+                        Chúng mình là team Stellar Steps, một team tập trung vào việc tổ chức các event offline/online
+                        cho fandom BanG Dream! tại Việt Nam.
+                    </p>
+                </div>
+                <div class="flex md:justify-end gap-4 items-start">
+                    <a class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center hover:bg-primary hover:text-white transition-colors"
+                        href="https://www.facebook.com/stellarsteps.event" target="_blank">
+                        <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.791-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                        </svg>
+                    </a>
+                    <a class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center hover:bg-secondary hover:text-white transition-colors"
+                        href="#">
+                        <span class="material-symbols-outlined text-sm">mail</span>
+                    </a>
+                </div>
+            </div>
+            <div
+                class="border-t border-gray-100 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-400">
+                <p>© 2026 Stellar Steps x World Simp & Friends Project. All Rights Reserved.</p>
+                <div class="flex space-x-6 mt-4 md:mt-0">
+                    <a class="hover:text-primary transition-colors" href="#">Chính sách bảo mật</a>
+                    <a class="hover:text-primary transition-colors" href="#">Điều khoản dịch vụ</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>

@@ -5,50 +5,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Stellar Steps Project - Portal</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="asset/css/styles.css">
     <link
         href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Nunito:wght@400;600;700&display=swap"
         rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Nunito', sans-serif;
-        }
 
-        h1,
-        h2,
-        .font-display {
-            font-family: 'Montserrat', sans-serif;
-        }
-
-        .bg-stars {
-            background-color: #1A1D2D;
-            background-image:
-                radial-gradient(white, rgba(255, 255, 255, .2) 2px, transparent 3px),
-                radial-gradient(white, rgba(255, 255, 255, .15) 1px, transparent 2px),
-                radial-gradient(white, rgba(255, 255, 255, .1) 2px, transparent 3px);
-            background-size: 550px 550px, 350px 350px, 250px 250px;
-            background-position: 0 0, 40px 60px, 130px 270px;
-            animation: starMove 100s linear infinite;
-        }
-
-        @keyframes starMove {
-            from {
-                background-position: 0 0, 40px 60px, 130px 270px;
-            }
-
-            to {
-                background-position: 550px 550px, 390px 410px, 380px 520px;
-            }
-        }
-
-        .glow-text {
-            text-shadow: 0 0 20px rgba(234, 0, 80, 0.6);
-        }
-    </style>
 </head>
 
 <body
-    class="bg-stars text-white flex flex-col items-center justify-center min-h-screen text-center px-4 overflow-hidden relative">
+    class="bg-stars font-body text-white flex flex-col items-center justify-center min-h-screen text-center px-4 overflow-hidden relative">
 
     <!-- Decorative Circle -->
     <div
@@ -64,7 +29,7 @@
 
         <div class="space-y-2">
             <h1
-                class="text-4xl md:text-6xl font-black bg-clip-text text-transparent bg-gradient-to-r from-pink-400 via-red-400 to-pink-400 glow-text">
+                class="text-4xl md:text-6xl font-black font-display bg-clip-text text-transparent bg-gradient-to-r from-pink-400 via-red-400 to-pink-400 glow-text">
                 STELLAR STEPS
             </h1>
             <p class="text-pink-200/80 tracking-[0.2em] font-bold text-sm md:text-base uppercase">Global Landing Point
@@ -73,7 +38,7 @@
 
         <div
             class="p-6 rounded-2xl bg-white/5 backdrop-blur-md border border-white/10 max-w-lg mx-auto transform hover:scale-105 transition-all duration-500">
-            <h2 class="text-xl font-bold mb-2">🚧 Under Construction 🚧</h2>
+            <h2 class="text-xl font-bold font-display mb-2">🚧 Under Construction 🚧</h2>
             <p class="text-gray-300 mb-6 text-sm">
                 Trang chủ chính thức đang được các staff chăm chỉ xây dựng.<br>
                 Hãy ghé thăm sự kiện mới nhất của chúng mình nhé!
@@ -98,27 +63,7 @@
     </div>
 
     <!-- Tailwind Config for Animation -->
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    animation: {
-                        'shimmer': 'shimmer 1.5s infinite',
-                        'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
-                    },
-                    keyframes: {
-                        shimmer: {
-                            '100%': { transform: 'translateX(100%)' }
-                        },
-                        fadeInUp: {
-                            '0%': { opacity: '0', transform: 'translateY(20px)' },
-                            '100%': { opacity: '1', transform: 'translateY(0)' }
-                        }
-                    }
-                }
-            }
-        }
-    </script>
+
 </body>
 
 </html>

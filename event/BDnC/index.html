@@ -121,23 +121,23 @@
             });
         </script>
     </nav>
-    <header class="relative pt-32 pb-20 md:pt-40 md:pb-24 overflow-hidden">
+    <header class="relative pt-32 pb-20 md:pt-24 md:pb-24 overflow-hidden">
         <div class="absolute inset-0 bg-gradient-to-br from-white/0 via-accent/20 to-white/0 pointer-events-none"></div>
         <div
             class="absolute top-0 right-0 w-1/3 h-full border-l border-primary/5 bg-white/30 transform skew-x-12 translate-x-1/4 pointer-events-none">
         </div>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="flex flex-col md:flex-row items-center gap-12 lg:gap-20">
-                <div class="md:w-1/2 text-center md:text-left space-y-6">
+                <div class="md:w-1/2 text-center md:text-left space-y-3 md:-mt-6 lg:-mt-24">
                     <div
                         class="inline-flex items-center gap-2 glass-panel px-4 py-1.5 rounded-full mb-2 border-l-4 border-l-primary">
                         <span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
                         <span class="text-primary font-bold text-xs tracking-widest uppercase">Sự kiện Offline
                             2026</span>
                     </div>
-                    <h1 class="font-display font-black text-4xl sm:text-5xl lg:text-7xl leading-tight">
+                    <h1 class="font-display font-black text-4xl sm:text-5xl md:text-5xl lg:text-7xl leading-tight">
                         <span
-                            class="block text-2xl sm:text-3xl lg:text-4xl text-primary font-extrabold tracking-widest mb-2 uppercase">Stellar
+                            class="block text-2xl sm:text-3xl md:text-3xl lg:text-4xl text-primary font-extrabold tracking-widest mb-2 uppercase">Stellar
                             Steps</span>
                         <span class="block text-gray-800 drop-shadow-sm glow-text">BanG Dream!<br /><span
                                 class="text-secondary">&amp; Chill</span></span>
@@ -146,35 +146,35 @@
                         10 năm là một cột mốc quan trọng, càng đặc biệt hơn nữa khi cả 10 band của BanG Dream! sẽ xuất
                         hiện trên sân khấu 10th anni live. Và tuyệt thật đấy, chúng ta lại có thể gặp nhau nhân dịp này!
                     </p>
-                    <div class="py-4">
+                    <div class="py-1">
                         <p class="text-sm font-bold text-gray-500 mb-3 uppercase tracking-wider">Đếm ngược đến 09:30 -
                             28/02/2026</p>
                         <div class="flex justify-center md:justify-start gap-2 sm:gap-4 flex-wrap sm:flex-nowrap">
                             <div
-                                class="glass-panel p-2 sm:p-4 rounded-xl min-w-[60px] sm:min-w-[80px] text-center group hover:border-primary/50 transition-colors">
+                                class="glass-panel p-2 md:p-3 lg:p-4 rounded-xl min-w-[60px] sm:min-w-[80px] text-center group hover:border-primary/50 transition-colors">
                                 <span id="days"
-                                    class="block text-2xl sm:text-3xl font-black text-primary group-hover:scale-110 transition-transform">00</span>
+                                    class="block text-2xl md:text-2xl lg:text-3xl font-black text-primary group-hover:scale-110 transition-transform">00</span>
                                 <span
                                     class="text-[8px] sm:text-[10px] text-gray-500 uppercase font-bold tracking-wider">Ngày</span>
                             </div>
                             <div
-                                class="glass-panel p-2 sm:p-4 rounded-xl min-w-[60px] sm:min-w-[80px] text-center group hover:border-primary/50 transition-colors">
+                                class="glass-panel p-2 md:p-3 lg:p-4 rounded-xl min-w-[60px] sm:min-w-[80px] text-center group hover:border-primary/50 transition-colors">
                                 <span id="hours"
-                                    class="block text-2xl sm:text-3xl font-black text-primary group-hover:scale-110 transition-transform">00</span>
+                                    class="block text-2xl md:text-2xl lg:text-3xl font-black text-primary group-hover:scale-110 transition-transform">00</span>
                                 <span
                                     class="text-[8px] sm:text-[10px] text-gray-500 uppercase font-bold tracking-wider">Giờ</span>
                             </div>
                             <div
-                                class="glass-panel p-2 sm:p-4 rounded-xl min-w-[60px] sm:min-w-[80px] text-center group hover:border-primary/50 transition-colors">
+                                class="glass-panel p-2 md:p-3 lg:p-4 rounded-xl min-w-[60px] sm:min-w-[80px] text-center group hover:border-primary/50 transition-colors">
                                 <span id="minutes"
-                                    class="block text-2xl sm:text-3xl font-black text-primary group-hover:scale-110 transition-transform">00</span>
+                                    class="block text-2xl md:text-2xl lg:text-3xl font-black text-primary group-hover:scale-110 transition-transform">00</span>
                                 <span
                                     class="text-[8px] sm:text-[10px] text-gray-500 uppercase font-bold tracking-wider">Phút</span>
                             </div>
                             <div
-                                class="glass-panel p-2 sm:p-4 rounded-xl min-w-[60px] sm:min-w-[80px] text-center group hover:border-primary/50 transition-colors">
+                                class="glass-panel p-2 md:p-3 lg:p-4 rounded-xl min-w-[60px] sm:min-w-[80px] text-center group hover:border-primary/50 transition-colors">
                                 <span id="seconds"
-                                    class="block text-2xl sm:text-3xl font-black text-primary group-hover:scale-110 transition-transform">00</span>
+                                    class="block text-2xl md:text-2xl lg:text-3xl font-black text-primary group-hover:scale-110 transition-transform">00</span>
                                 <span
                                     class="text-[8px] sm:text-[10px] text-gray-500 uppercase font-bold tracking-wider">Giây</span>
                             </div>
@@ -210,8 +210,8 @@
                             updateCountdown(); // Initial call
                         </script>
                     </div>
-                    <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start pt-4">
-                        <a class="bg-primary hover:bg-secondary text-white px-8 py-4 rounded-xl font-bold shadow-xl shadow-primary/30 transition-all hover:-translate-y-1 flex items-center justify-center gap-2 ring-2 ring-white/50"
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start pt-2">
+                        <a class="bg-primary hover:bg-secondary text-white px-6 md:px-8 py-3 md:py-4 rounded-xl font-bold shadow-xl shadow-primary/30 transition-all hover:-translate-y-1 flex items-center justify-center gap-2 ring-2 ring-white/50"
                             href="#tickets">
                             <span class="material-symbols-outlined">local_activity</span>
                             ĐẶT VÉ NGAY
@@ -220,7 +220,7 @@
                 </div>
                 <div class="md:w-1/2 relative animate-float flex justify-center md:justify-end items-center">
                     <div
-                        class="relative z-10 w-full max-w-[300px] md:max-w-none md:w-[140%] lg:w-[180%] xl:w-[260%] mx-auto md:mx-0 md:-mr-20 lg:-mr-32 xl:-mr-[30rem] flex justify-center">
+                        class="relative z-10 w-full max-w-[300px] md:max-w-none md:w-[140%] lg:w-[150%] xl:w-[150%] mx-auto md:mx-0 md:-mr-10 lg:-mr-20 xl:-mr-32 flex justify-center md:-mt-24 lg:-mt-32">
                         <img alt="BanG Dream! Visual" fetchpriority="high" loading="eager"
                             class="w-full h-auto max-h-[50vh] md:max-h-[70vh] xl:max-h-none object-contain drop-shadow-2xl transition-all duration-700 hover:scale-105 opacity-0"
                             src="asset/images/visual-art.webp" onload="this.classList.remove('opacity-0')" width="2332"
